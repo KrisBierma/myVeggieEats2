@@ -60,20 +60,20 @@ function populateTabs(uid) {
             notesAll = chillins.notes;
             $("#displayNotes").html(notesAll);
             var tabInfo = database.ref(uid).key;
-            if (typeof t1 !== "boolean") {
-                var newTab = $("<li>").addClass("tab col s3");
+            if (typeof t1 !== "boolean" && typeof t1 !== "undefined") {
+                var newTab = $("<li>").addClass("tab col");
                 var newA = $("<a id=tab1>").text(t1.tabName);
                 newTab.append(newA);
                 $(".tabs").append(newTab);
             }
-            if (typeof t2 !== "boolean") {
-                var newTab = $("<li>").addClass("tab col s3");
+            if (typeof t2 !== "boolean" && typeof t2 !== "undefined") {
+                var newTab = $("<li>").addClass("tab col");
                 var newA = $("<a id=tab2>").text(t2.tabName);
                 newTab.append(newA);
                 $(".tabs").append(newTab);
             }
-            if (typeof t3 !== "boolean") {
-                var newTab = $("<li>").addClass("tab col s3");
+            if (typeof t3 !== "boolean" && typeof t3 !== "undefined") {
+                var newTab = $("<li>").addClass("tab col");
                 var newA = $("<a id=tab3>").text(t3.tabName);
                 newTab.append(newA);
                 $(".tabs").append(newTab);
@@ -228,28 +228,35 @@ database.ref(uid).on("value", function (snapShot) {
     $(".tabs").empty();
     var tabInfo = database.ref(uid).key;//uid
     var chillins = snapShot.child(uid).val();//children of uid
-
+// console.log(uid);
+// console.log(chillins);
     if (uid !== undefined) {
         var t1 = chillins.tab1;//values of tab1
         var t2 = chillins.tab2;
         var t3 = chillins.tab3;
+
+        // if (t1 !== undefined || t2 !== undefined || t3 !== undefined)
+
         var tabInfo = database.ref(uid).key;
         notesAll = chillins.notes;
+        // console.log(t1, t2, t3, tabInfo);
+        // console.log(typeof t1);
         $("#displayNotes").html(notesAll);
-        if (typeof t1 !== "boolean") {
-            var newTab = $("<li>").addClass("tab col s2");
+        if (typeof t1 !== "boolean" && typeof t1 !== "undefined") {
+            // console.log("here");
+            var newTab = $("<li>").addClass("tab col");
             var newA = $("<a id=tab1>").text(t1.tabName);
             newTab.append(newA);
             $(".tabs").append(newTab);
         }
-        if (typeof t2 !== "boolean") {
-            var newTab = $("<li>").addClass("tab col s2");
+        if (typeof t2 !== "boolean" && typeof t1 !== "undefined") {
+            var newTab = $("<li>").addClass("tab col");
             var newA = $("<a id=tab2>").text(t2.tabName);
             newTab.append(newA);
             $(".tabs").append(newTab);
         }
-        if (typeof t3 !== "boolean") {
-            var newTab = $("<li>").addClass("tab col s2");
+        if (typeof t3 !== "boolean" && typeof t1 !== "undefined") {
+            var newTab = $("<li>").addClass("tab col");
             var newA = $("<a id=tab3>").text(t3.tabName);
             newTab.append(newA);
             $(".tabs").append(newTab);

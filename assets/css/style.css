@@ -2,6 +2,9 @@ body {
     /*font-family: GillSans, Calibri, Trebuchet, sans-serif;*/
     font-family: 'Varela', sans-serif;
   }
+.green-box{
+    border-bottom: 2px inset;
+}
 #map {
     height: 400px;
     width: 100%;
@@ -16,7 +19,7 @@ header .brand-logo{
     line-height:4.1rem;
 }
 #headerSearch .input-field{
-    border-bottom: white;
+    border-bottom: black;
 }
 .nav-wrapper {
     margin-left: -.75rem;
@@ -84,10 +87,12 @@ div#photo.row{
     margin-right: auto;
 }
 div#listingDetails.row{
-    padding-top: 15px;
+    padding: 15px 3px 3px 3px;
     min-height:150px;
     background-color:#ffab80;
     text-align: center;
+    border-left: 3px solid whitesmoke;
+
 }
 #restaurants-big{
     min-height:50px;
@@ -95,28 +100,43 @@ div#listingDetails.row{
 }
 div#notes.row{
     min-height:150px;
-    background-color:#fff;
+    background-color:#ffab80;
     border-top:1px solid grey;
 }
 
 div#displayNotes.row{
     min-height:150px;
-    background-color:#fff;
-    border-top:1px solid grey;
+    background-color:#ffab80;
+    border-top:1px dotted grey;
+    padding: 5px;
+    border-left: 3px solid whitesmoke;
+
 }
 
 
 div#notesOz.row{
     min-height:150px;
-    background-color:#fff;
+    background-color:#ffab80;
     border-top:1px solid grey;
+    padding: 5px;
+    border-left: 3px solid whitesmoke;
+    /* align-items: center; */
+    /* display:flex;
+    align-content: center; */
+    position:relative;  
+}
+#userNotes{
+    /* display:flex;
+    align-content: center; */
+    margin:auto;
+}
+#notesLabel{
+    color:black;
 }
 
 #modalBtnTab {
     font-size: 1.5em;
-    color: #00838f;
-    margin-top: 10px;
-    background-color: #00acc1;
+    color: #f2453d;
 }
 .tabs{
     background-color:#aed581;
@@ -138,9 +158,4 @@ div#notesOz.row{
     font-size:1rem;
     border-bottom: white 1px solid;
     color: white;   
-}
-.btn {
-    padding-right: 8px;
-    padding-left: 8px;
-    background-color:#689f38;
 }
