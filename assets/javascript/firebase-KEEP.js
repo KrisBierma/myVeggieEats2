@@ -157,7 +157,7 @@ $("#addTab").on("click", function (event) {
     var tabStreet = $("#tabStreet").val().trim();
     var tabCity = $("#tabCity").val().trim();
     var tabZip = $("#tabZip").val().trim();
-console.log("here");
+
     //make sure all info is included
     if (tabStreet != "" && tabStreet != "" && tabCity != "" && tabZip != "") {
 
@@ -212,12 +212,19 @@ $("#modalBtnTab").click(function () {
 });
 
 var tabCount;
+var deleteTabBtn1;
+var deleteTabBtn2;
+var deleteTabBtn3;
+var chillins;
 function countTabs(){
     database.ref(uid).on("value", function (snapShot) {
         var tabInfo = database.ref(uid).key;//uid
-        var chillins = snapShot.val();//children of current uid
+        chillins = snapShot.val();//children of current uid
         // console.log(tabInfo, chillins);
         tabCount=0;
+        deleteTabBtn1=undefined;
+        deleteTabBtn2=undefined;
+        deleteTabBtn3=undefined;
         if (uid !== undefined) {
             var t1 = chillins.tab1;//values of tab1
             var t2 = chillins.tab2;
@@ -241,17 +248,26 @@ function countTabs(){
     if (tabCount===3){
         $("#modalBtnTab").attr("href", "#modalTabsDelete");
 
-        for (var i=1; i<4; i++){
-            var tempName = "t"+i;
-            console.log(tempName, tempName.toString().tabName, t1.tabName);
-            if (typeof tempName.tabName !== "undefined" && typeof tempName.tabName !== "boolean"){
-                console.log("not null");
-                var deleteBtn = $("<button>");
-                deleteBtn.addClass("waves-effect waves-light btn");
-                deleteBtn.attr("tempName");
-                deleteBtn.text(tempName);
-                $(".modal-content").append(deleteBtn);
-            }
+        var chillinsArr=[t1, t2, t3];
+        for (var i=0; i<3; i++){
+            var tempName = chillinsArr[i];
+            // console.log(tempName);
+            // console.log(tempName.tabName);
+
+            // if(tempName !== "undefined"){
+                if (typeof tempName.tabName !== "undefined" && typeof tempName.tabName !== "boolean"){
+                    var deleteBtn = $("<button>");
+                    deleteBtn.addClass("waves-effect waves-light btn");
+
+                    var tempCount=i+1;
+                    var tempBtnId="deleteTabBtn"+tempCount;
+
+                    deleteBtn.attr("id", tempBtnId);
+                    deleteBtn.text(tempName.tabName);
+                    $(".modal-content").append(deleteBtn);
+
+                }
+            // }
         }
     }
     else{
@@ -259,6 +275,13 @@ function countTabs(){
 
     }
 })};
+
+//have to listen to document for dynamically created buttons
+$(document).on("click", "#deleteTabBtn1", function(){
+    // console.log(this);
+    console.log(chillins.tab1);
+    
+});
 
 $("#notesToBeAdded").on("click", function () {
     if (uid != undefined) {
