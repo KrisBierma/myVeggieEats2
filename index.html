@@ -104,7 +104,7 @@
                 <div class="row light-green lighten-2 valign-wrapper">
                     <div class="col tabMar">
                         <!-- Add Tab Modal Trigger -->
-                        <a id="modalBtnTab" class="waves-effect waves-light btn modal-trigger" >+ Tab</a>
+                        <a href="#modalTabs" id="modalBtnAddTab" class="waves-effect waves-light btn modal-trigger" >+ Tab</a>
                     </div>
                     <!-- Map Tab MODAL-->
                     <div id="modalTabs" class="modal light-green lighten-2" style="z-index: 1003; display: none; opacity: 0; transform: scaleX(0.7); top: 4%;">
@@ -149,8 +149,13 @@
                         </div>
                     </div>
 
+                    <!-- Delete tab Modal and Trigger -->
+                    <div class="col tabMar">
+                        <a href="#modalTabsDelete" id="modalBtnDeleteTab" class="waves-effect waves-light btn modal-trigger" >- Tab</a>
+                    </div>
+                    
                     <div id="modalTabsDelete" class="modal light-green lighten-2" style="z-index: 1003; display: none; opacity: 0; transform: scaleX(0.7); top: 4%;">
-                        <div class="modal-content">
+                        <div class="modal-content modal-delete-content">
                             <h4>Delete A Map Tab</h4>
                             <div class="row">
                                 <form id="mapTabs" class="col s12">

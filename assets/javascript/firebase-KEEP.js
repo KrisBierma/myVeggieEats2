@@ -166,8 +166,10 @@ $("#addTab").on("click", function (event) {
             var tabInfo = database.ref(uid).child("tab" + i).key;
             var tabValue;
             var popTab = false;
+            console.log(tabInfo,tabValue);
             database.ref(uid).child("tab" + i).once("value", function (snap) {
                 tabValue = snap.val();
+                console.log(tabValue);
             });
 
             //if there's an empty (false) tab, push the data and break the label loop above
@@ -201,14 +203,17 @@ $("#addTab").on("click", function (event) {
 });
 
 //  Map Tabs : Add a Tab MODAL
-$("#modalBtnTab").click(function () {
-    if ($("#modalBtnTab").attr("href")==="#modalTabsDelete")
-    {
-        $("#modalTabsDelete").modal();
-    }
-    else{
+$("#modalBtnAddTab").click(function () {
+    // if ($("#modalBtnTab").attr("href")==="#modalTabsDelete")
+    // {
+        // $("#modalTabsDelete").modal();
+    // }
+    // else{
         $("#modalTabs").modal();
-    }
+    // }
+});
+$("#modalBtnDeleteTab").click(function () {
+    $("#modalTabsDelete").modal();
 });
 
 var tabCount;
@@ -230,7 +235,8 @@ function countTabs(){
             var t2 = chillins.tab2;
             var t3 = chillins.tab3;
             var tabInfo = database.ref(uid).key;
-            console.log("here", t1, t2,t3,tabInfo);
+            console.log(t1, t2,t3,tabInfo);
+            // console.log(typeof t1);
             if (typeof t1 !== "boolean" && typeof t1 !== "undefined") {
                 tabCount++;
                 console.log(tabCount);
@@ -243,12 +249,14 @@ function countTabs(){
                 tabCount++;
                 console.log(tabCount);
                 }
+            console.log(tabCount);
         }
 
-    if (tabCount===3){
-        $("#modalBtnTab").attr("href", "#modalTabsDelete");
+    // if (tabCount===3){
+        // $("#modalBtnTab").attr("href", "#modalTabsDelete");
 
         var chillinsArr=[t1, t2, t3];
+        $(".modal-delete-content").empty();
         for (var i=0; i<3; i++){
             var tempName = chillinsArr[i];
             // console.log(tempName);
@@ -264,29 +272,37 @@ function countTabs(){
 
                     deleteBtn.attr("id", tempBtnId);
                     deleteBtn.text(tempName.tabName);
-                    $(".modal-content").append(deleteBtn);
+                    $(".modal-delete-content").append(deleteBtn);
 
                 }
             // }
-        }
+        // }
     }
-    else{
-        $("#modalBtnTab").attr("href", "#modalTabs");
+    // else{
+    //     $("#modalBtnTab").attr("href", "#modalTabs");
 
-    }
+    // }
 })};
 
 //have to listen to document for dynamically created buttons
-$(document).on("click", "#deleteTabBtn1", function(){
-    // console.log(this);
-    console.log(chillins.tab1);
-    
+$(document).on("click", "#deleteTabBtn1", function(e){
+    database.ref(uid).child("tab1").set(false);
+    tabCount();
+});
+$(document).on("click", "#deleteTabBtn2", function(e){
+    database.ref(uid).child("tab2").set(false);
+    tabCount();
+});
+$(document).on("click", "#deleteTabBtn3", function(e){
+    database.ref(uid).child("tab3").set(false);
+    tabCount();
 });
 
 $("#notesToBeAdded").on("click", function () {
     if (uid != undefined) {
         var noteNew = $("#thisIsNote").val().trim();
         notesAll += noteNew + "<br>";
+        console.log(database.ref(uid));
         database.ref(uid).update({
             notes: notesAll
         });
