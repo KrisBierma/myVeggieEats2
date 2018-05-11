@@ -22,7 +22,7 @@ My Veggie Eats...
 ## Authors
 
 * **Carolyn Vasisko** - [vasisko](https://github.com/vasisko)
-* **Cody Sherrod** - [csherrod](https://github.com/csherrod/csherrod.github.io)
+* **Cody Sherrod** - [csherrod](https://github.com/csherrod)
 * **Kris Acker Bierma** - [KrisBierma](https://github.com/KrisBierma)
 * **Ozair Khan** - [OzairK](https://github.com/OzairK)
 

@@ -49,6 +49,7 @@ btnLogin.addEventListener('click', e => {
 //makes the tabs; is called when user registers, logsin, or a tab is added
 function populateTabs(uid) {
     $(".tabs").empty();
+    console.log("here");
     database.ref(uid).on("value", function (snapShot) {
         var tabInfo = database.ref(uid).key;//uid
         var chillins = snapShot.val();//children of current uid
@@ -65,21 +66,23 @@ function populateTabs(uid) {
                 var newA = $("<a id=tab1>").text(t1.tabName);
                 newTab.append(newA);
                 $(".tabs").append(newTab);
+                    console.log(tabCount);
             }
             if (typeof t2 !== "boolean" && typeof t2 !== "undefined") {
                 var newTab = $("<li>").addClass("tab col");
                 var newA = $("<a id=tab2>").text(t2.tabName);
                 newTab.append(newA);
                 $(".tabs").append(newTab);
-            }
+                }
             if (typeof t3 !== "boolean" && typeof t3 !== "undefined") {
                 var newTab = $("<li>").addClass("tab col");
                 var newA = $("<a id=tab3>").text(t3.tabName);
                 newTab.append(newA);
                 $(".tabs").append(newTab);
-            }
+                }
         }
     })
+    countTabs();
 };
 
 //Add SignUp event
@@ -154,7 +157,7 @@ $("#addTab").on("click", function (event) {
     var tabStreet = $("#tabStreet").val().trim();
     var tabCity = $("#tabCity").val().trim();
     var tabZip = $("#tabZip").val().trim();
-
+console.log("here");
     //make sure all info is included
     if (tabStreet != "" && tabStreet != "" && tabCity != "" && tabZip != "") {
 
@@ -194,8 +197,68 @@ $("#addTab").on("click", function (event) {
 
     //reset the form
     $("#mapTabs")[0].reset();
+    countTabs();
 });
 
+//  Map Tabs : Add a Tab MODAL
+$("#modalBtnTab").click(function () {
+    if ($("#modalBtnTab").attr("href")==="#modalTabsDelete")
+    {
+        $("#modalTabsDelete").modal();
+    }
+    else{
+        $("#modalTabs").modal();
+    }
+});
+
+var tabCount;
+function countTabs(){
+    database.ref(uid).on("value", function (snapShot) {
+        var tabInfo = database.ref(uid).key;//uid
+        var chillins = snapShot.val();//children of current uid
+        // console.log(tabInfo, chillins);
+        tabCount=0;
+        if (uid !== undefined) {
+            var t1 = chillins.tab1;//values of tab1
+            var t2 = chillins.tab2;
+            var t3 = chillins.tab3;
+            var tabInfo = database.ref(uid).key;
+            console.log("here", t1, t2,t3,tabInfo);
+            if (typeof t1 !== "boolean" && typeof t1 !== "undefined") {
+                tabCount++;
+                console.log(tabCount);
+            }
+            if (typeof t2 !== "boolean" && typeof t2 !== "undefined") {
+                tabCount++;
+                console.log(tabCount);
+                }
+            if (typeof t3 !== "boolean" && typeof t3 !== "undefined") {
+                tabCount++;
+                console.log(tabCount);
+                }
+        }
+
+    if (tabCount===3){
+        $("#modalBtnTab").attr("href", "#modalTabsDelete");
+
+        for (var i=1; i<4; i++){
+            var tempName = "t"+i;
+            console.log(tempName, tempName.toString().tabName, t1.tabName);
+            if (typeof tempName.tabName !== "undefined" && typeof tempName.tabName !== "boolean"){
+                console.log("not null");
+                var deleteBtn = $("<button>");
+                deleteBtn.addClass("waves-effect waves-light btn");
+                deleteBtn.attr("tempName");
+                deleteBtn.text(tempName);
+                $(".modal-content").append(deleteBtn);
+            }
+        }
+    }
+    else{
+        $("#modalBtnTab").attr("href", "#modalTabs");
+
+    }
+})};
 
 $("#notesToBeAdded").on("click", function () {
     if (uid != undefined) {
@@ -230,6 +293,7 @@ database.ref(uid).on("value", function (snapShot) {
     var chillins = snapShot.child(uid).val();//children of uid
 // console.log(uid);
 // console.log(chillins);
+console.log("here");
     if (uid !== undefined) {
         var t1 = chillins.tab1;//values of tab1
         var t2 = chillins.tab2;
@@ -262,4 +326,5 @@ database.ref(uid).on("value", function (snapShot) {
             $(".tabs").append(newTab);
         }
     }
+    countTabs();
 });

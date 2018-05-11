@@ -16,9 +16,11 @@ $(document).ready(function () {
         $("#modal2").modal();
     });
     //  Map Tabs : Add a Tab MODAL
-    $("#modalBtnTab").click(function () {
-        $("#modalTabs").modal();
-    });
+    //moved to firebase-keep.js
+    // $("#modalBtnTab").click(function () {
+    //     $("#modalTabs").modal();
+    //     console.log(popTab);
+    // });
     //  User Notes  MODAL
     $("#modalBtnNotes").click(function () {
         $("#modalNotes").modal();

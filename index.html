@@ -102,14 +102,14 @@
 
                 <!-- Map Tabs -->
                 <div class="row light-green lighten-2 valign-wrapper">
-                    <div class="col">
+                    <div class="col tabMar">
                         <!-- Add Tab Modal Trigger -->
-                        <a id="modalBtnTab" class="waves-effect waves-light btn modal-trigger" href="#modalTabs">+ Tab</a>
+                        <a id="modalBtnTab" class="waves-effect waves-light btn modal-trigger" >+ Tab</a>
                     </div>
                     <!-- Map Tab MODAL-->
                     <div id="modalTabs" class="modal light-green lighten-2" style="z-index: 1003; display: none; opacity: 0; transform: scaleX(0.7); top: 4%;">
                         <div class="modal-content">
-                            <h4>Add/Update A Map Tab</h4>
+                            <h4>Add A Map Tab</h4>
                             <div class="row">
                                 <form id="mapTabs" class="col s12">
 
@@ -146,6 +146,50 @@
                         <div class="modal-footer">
                             <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat ">Cancel</a>
                             <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="addTab">Add Tab</a>
+                        </div>
+                    </div>
+
+                    <div id="modalTabsDelete" class="modal light-green lighten-2" style="z-index: 1003; display: none; opacity: 0; transform: scaleX(0.7); top: 4%;">
+                        <div class="modal-content">
+                            <h4>Delete A Map Tab</h4>
+                            <div class="row">
+                                <form id="mapTabs" class="col s12">
+
+                                    
+
+                                    <!-- Tab  Info -->
+                                    <!-- <div class="row">
+                                        <div class="input-field col s6">
+                                            <input id="tabName" type="text">
+                                            <label for="tabName">Tab Name</label>
+                                        </div>
+                                    </div> -->
+                                    <!-- <div class="row">
+                                        <div class="input-field col s12">
+                                            <input id="tabStreet" type="text">
+                                            <label for="tabStreet">Street Address</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input id="tabCity" type="text">
+                                            <label for="tabCity">City</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input id="tabZip" type="text">
+                                            <label for="tabZip">Zip</label>
+                                        </div>
+                                    </div> -->
+                                    <!-- end of tab  info -->
+
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat ">Cancel</a>
+                            <!-- <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="addTab">Add Tab</a> -->
                         </div>
                     </div>
 

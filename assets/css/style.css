@@ -31,6 +31,7 @@ input#city{
 input#restaurant{
     border-bottom: white 1px solid;
 }
+.input-field{color:black;}
 .select-wrapper input.select-dropdown {
     color: white;
     border-bottom: white 1px solid;
@@ -45,13 +46,20 @@ input#restaurant{
 }
 #modal1, #modal2, #modalTabs {
     color: white;
-     background-color: #aed581;
+    background-color: #aed581;
+}
+#modalTabsDelete {
+    color:black;
 }
 .modal-footer{
     color: #66bb6a;
 }
 #txtForgotEmail {
     color: white;
+}
+
+.tabMar{
+    max-width:120px !important;
 }
 
 #modalBtn {font-size:.7rem;}
@@ -135,14 +143,15 @@ div#notesOz.row{
 }
 
 #modalBtnTab {
-    font-size: 1.5em;
+    /* font-size: 1.5em; */
     color: #f2453d;
 }
 .tabs{
     background-color:#aed581;
 }
 .tabs .tab a{
-    font-size:10px;
+    font-size:15px;
+    padding:0;
 }
 .tabs :hover{
     background-color:#9ccc66;
