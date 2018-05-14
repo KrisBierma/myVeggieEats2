@@ -260,7 +260,7 @@ function countTabs(){
             // console.log(tempName);
             // console.log(tempName.tabName);
 
-            // if(tempName !== "undefined"){
+            if(tempName !== "undefined"){
                 if (typeof tempName.tabName !== "undefined" && typeof tempName.tabName !== "boolean"){
                     var deleteBtn = $("<button>");
                     deleteBtn.addClass("waves-effect waves-light btn");
@@ -273,9 +273,9 @@ function countTabs(){
                     $(".modal-delete-content").append(deleteBtn);
 
                 }
-            // }
-        // }
-    }
+            }
+        }
+    // }
     // else{
     //     $("#modalBtnTab").attr("href", "#modalTabs");
 

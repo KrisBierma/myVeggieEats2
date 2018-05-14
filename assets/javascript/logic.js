@@ -83,7 +83,6 @@ $("#searchIt").on("click", function (event) {
 
     if (generalSearch) {
         getCityInfo(function () {
-            console.log("here");
             getCuisineInfo();
         })
     }
@@ -97,7 +96,9 @@ $("#searchIt").on("click", function (event) {
 $(document).on("click", ".cuisineOptionBox", function () {
     event.preventDefault();
     var c = $(this).val();
-    cuisine_id = "308%2C%20" + c;
+    // cuisine_id = "308%2C%20" + c;
+    cuisine_id = c;
+    console.log(c);
     getRestaurants();
 });
 
@@ -166,7 +167,6 @@ function getCityInfo(callback) {
         initMapLng = parseFloat(response.location_suggestions[0].longitude);
         entity_type = response.location_suggestions[0].entity_type;
         getRestaurants();
-        console.log("here");
         callback();
     });
 };
@@ -178,16 +178,14 @@ var allCuisines = []; //list of all cuisines and ids in obj
 
 //gives list of cuisine types for a city
 function getCuisineInfo() {
-    console.log("here");
     if (!generalSearch) return;
-    console.log("here");
-    
+    queryUrlCuisines = "https://developers.zomato.com/api/v2.1/cuisines?city_id=" + city_id;
+
     $.ajax({
         url: queryUrlCuisines,
         method: "GET",
         headers: { "user-key": apiKey }
     }).then(function (response) {
-        console.log(response);
         for (var i = 0; i < response.cuisines.length; i++) {
             var r = response.cuisines[i].cuisine;
             allCuisines[i] = {
@@ -214,10 +212,10 @@ var queryUrlRestaurants;
 //this function calls the initmap function
 function getRestaurants() {
     // console.log("running getRestaurants; only on general search");
-    // console.log(cuisine_id);
+    console.log(cuisine_id);
     if (!generalSearch) return;
     queryUrlRestaurants = "https://developers.zomato.com/api/v2.1/search?entity_id=" + city_id + "&entity_type=" + entity_type + "&cuisines=" + cuisine_id;
-
+console.log(queryUrlRestaurants);
 
     // console.log(queryUrlRestaurants);
     // console.log(cuisine_id, entity_type, city_id); //keep this
