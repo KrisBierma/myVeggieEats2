@@ -83,6 +83,7 @@ $("#searchIt").on("click", function (event) {
 
     if (generalSearch) {
         getCityInfo(function () {
+            console.log("here");
             getCuisineInfo();
         })
     }
@@ -165,6 +166,7 @@ function getCityInfo(callback) {
         initMapLng = parseFloat(response.location_suggestions[0].longitude);
         entity_type = response.location_suggestions[0].entity_type;
         getRestaurants();
+        console.log("here");
         callback();
     });
 };
@@ -176,13 +178,16 @@ var allCuisines = []; //list of all cuisines and ids in obj
 
 //gives list of cuisine types for a city
 function getCuisineInfo() {
+    console.log("here");
     if (!generalSearch) return;
-
+    console.log("here");
+    
     $.ajax({
         url: queryUrlCuisines,
         method: "GET",
         headers: { "user-key": apiKey }
     }).then(function (response) {
+        console.log(response);
         for (var i = 0; i < response.cuisines.length; i++) {
             var r = response.cuisines[i].cuisine;
             allCuisines[i] = {

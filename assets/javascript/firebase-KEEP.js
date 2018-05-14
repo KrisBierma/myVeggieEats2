@@ -109,7 +109,7 @@ btnSignUp.addEventListener('click', e => {
                 tab1: false,
                 tab2: false,
                 tab3: false,
-                notes: false
+                notes: ""
             });
 
             user.updateProfile({
@@ -150,8 +150,6 @@ firebase.auth().onAuthStateChanged(function (user) {
 var database = firebase.database();
 
 $("#addTab").on("click", function (event) {
-    //to do:when add tab, add delete button to modal
-    //to do:if delete btn clicked, delete fb info
     uid = firebase.auth().currentUser.uid;
     var tabName = $("#tabName").val().trim();
     var tabStreet = $("#tabStreet").val().trim();
@@ -187,9 +185,9 @@ $("#addTab").on("click", function (event) {
         }
 
         //if no tabs populated, max is reached, alert user
-        if (popTab === false) {
-            console.log("You've reached the max number of tabs. Delete one first before adding another.");
-        }
+        // if (popTab === false) {
+        //     console.log("You've reached the max number of tabs. Delete one first before adding another.");
+        // }
     }
 
     //if missing tabName, address, city, or zip ->give error message
@@ -306,6 +304,7 @@ $("#notesToBeAdded").on("click", function () {
         database.ref(uid).update({
             notes: notesAll
         });
+        document.getElementById("notesForm").reset();
     }
     else {
         alert("please log in or register to use notes.")
