@@ -94,7 +94,7 @@ $("#searchIt").on("click", function (event) {
 });
 
 $(document).on("click", ".cuisineOptionBox", function () {
-    event.preventDefault();
+    // event.preventDefault();
     var c = $(this).val();
     // cuisine_id = "308%2C%20" + c;
     cuisine_id = c;
@@ -224,7 +224,8 @@ console.log(queryUrlRestaurants);
         method: "GET",
         headers: { "user-key": apiKey } //api key
     }).then(function (response) {
-        // console.log(response.restaurants); //lists 20 restaurants //keep this
+        // console.log(response.restaurants); //lists 20 restaurants max//keep this
+        allRestaurants=[];
         for (var j = 0; j < response.restaurants.length; j++) {
             var r = response.restaurants[j].restaurant;
             var rl = r.location;

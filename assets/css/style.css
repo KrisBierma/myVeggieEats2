@@ -2,6 +2,9 @@ body {
     /*font-family: GillSans, Calibri, Trebuchet, sans-serif;*/
     font-family: 'Varela', sans-serif;
   }
+header div.col{
+    flex-basis: auto;
+}
 .green-box{
     border-bottom: 2px inset;
 }
@@ -50,6 +53,7 @@ input#restaurant{
 }
 #modalTabsDelete {
     color:black;
+    width:300px;
 }
 .modal-footer{
     /* color: #66bb6a; */
@@ -192,6 +196,9 @@ div#notesOz.row{
 }
 .btn{
     background-color:#2a2659;
+}
+.tabBtn{
+    margin-bottom:5px;
 }
 #topLoginBlock {
     width: 300px;

@@ -263,7 +263,7 @@ function countTabs(){
             if(tempName !== "undefined"){
                 if (typeof tempName.tabName !== "undefined" && typeof tempName.tabName !== "boolean"){
                     var deleteBtn = $("<button>");
-                    deleteBtn.addClass("waves-effect waves-light btn");
+                    deleteBtn.addClass("waves-effect waves-light btn tabBtn");
 
                     var tempCount=i+1;
                     var tempBtnId="deleteTabBtn"+tempCount;
