@@ -1,6 +1,6 @@
 # teamAwesome
 
-My Veggie Eats... 
+My Veggie Eats specializes in finding vegetarian restaurants (though you can also search other cuisines) in the area. Once logged in, the user can customize tabs with addresses and save notes.  
 
 ## Instructions
 
